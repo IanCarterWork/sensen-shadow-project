@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "sourceMap": false,
+        "noImplicitAny": true,
+        "module": "ES2020",
+        "target": "ES2020",
+        "jsx": "react",
+        "allowJs": true,
+        "moduleResolution": "node",
+        // "typeRoots": [ "./app", ],
+        "types": ["node"],
+        "rootDir": "./app",
+        "outDir": "./jsbundle",
+        "baseUrl": "./jsbundle",
+        "paths": {
+            "sensen-hinata/core":["./sensen-hinata/core"]
+        }
+    },
+
+
+    "include": [
+        "./app"
+    ],
+
+    
+}

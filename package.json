@@ -1,0 +1,43 @@
+{
+  "name": "sensen-shadow",
+  "version": "0.0.1",
+  "description": "Web template runtime",
+  "main": "app/index.ts",
+  "scripts": {
+    "mount": "node sensen/mount && tsc",
+    "run": "tsc -watch && npx webpack serve --hot",
+    "build": "tsc && webpack --config webpack.config.js",
+    "publish": "tsc && webpack --config webpack.config.js --mode=production"
+  },
+  "keywords": [
+    "html",
+    "css",
+    "js",
+    "typescript",
+    "template",
+    "sensen",
+    "shadow",
+    "template",
+    "engine",
+    "web",
+    "runtime"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "copy-webpack-plugin": "^10.2.0",
+    "favicons": "^6.2.2",
+    "favicons-webpack-plugin": "^5.0.2",
+    "fs-extra": "^10.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "sensen-hinata": "^0.0.15",
+    "typescript": "^4.5.4",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.2",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "devDependencies": {
+    "ignore-loader": "^0.1.2"
+  }
+}

@@ -1,4 +1,18 @@
-const SensenCli = {}
+const SensenCli = {
+    
+    Version: 1,
+    
+    VersionString: '0.0.1',
+
+    VersionName: 'Shadow',
+
+    Resposite:{
+
+        URL: ``
+        
+    }
+
+}
 
 
 /**
@@ -77,6 +91,92 @@ SensenCli.Log.Error = (title = '', message = '')=>{
     return SensenCli.Log;
                 
 }
+
+
+
+
+
+
+
+
+
+/**
+ * Sensen Bootstrap
+ */
+SensenCli.Command = function(args){
+
+    switch(args[2] || null){
+
+
+        /**
+         * Create New Project
+         */
+        case 'create':
+
+            const name = args[3] || null;
+
+            if(name){
+
+                this.Log.Message('Initialization', `${ name }...`)
+
+                
+                
+            }
+
+            else{
+
+                this.Log.Error('Project Manager', 'Veuillez indiquer le nom de votre projet')
+                
+            }
+
+        break;
+
+
+
+
+        /**
+         * No Command
+         */
+        default:
+
+            this.Log.Message(
+                
+                'Sensen', 
+                
+                `${ this.VersionName }, ${ this.Version } (${ this.VersionString })`
+
+            )
+
+        
+        break;
+
+        
+        
+    }
+    
+
+    return SensenCli
+    
+}
+
+
+
+
+
+
+
+
+/**
+ * Sensen Bootstrap
+ */
+SensenCli.Boot = function(args){
+
+    // console.log('Sensen Running\n', args)
+
+    return this.Command(args)
+    
+}
+
 
 
 

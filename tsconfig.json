@@ -12,9 +12,7 @@
         "rootDir": "./app",
         "outDir": "./jsbundle",
         "baseUrl": "./jsbundle",
-        "paths": {
-            "sensen-hinata/core":["./sensen-hinata/core"]
-        }
+        "esModuleInterop": true,
     },
 
 

@@ -25,6 +25,10 @@ export default class SensenTheme{
     
 
 
+    Assets: { CSS: string[], JS: string[] } = {
+        CSS:[],
+        JS:[],
+    }
     
     
     
@@ -61,7 +65,7 @@ export default class SensenTheme{
 
     
 
-    async Define(name: string, payload: Promise<string> | string){
+    Define(name: string, payload: Promise<string> | string){
 
 
 
@@ -122,6 +126,83 @@ export default class SensenTheme{
         return this;
 
     }
+
+
+
+
+
+
+
+
+
+    Asset(type: '-css' | '-js', path : string){
+
+        switch(type){
+
+            case '-css': this.Assets.CSS.push(path); break;
+
+            case '-js': this.Assets.JS.push(path); break;
+            
+        }
+
+        return this;
+
+    }
+    
+
+
+    LoadCSS(path: string){
+
+        const d = document.createElement('link')
+        
+        d.addEventListener('load', ()=>{
+            console.log('Asset :', path, 'loaded')
+        })
+        
+        d.addEventListener('error', ()=>{
+            console.log('Asset :', path, 'failed')
+        })
+
+        d.setAttribute('type', 'text/css')
+
+        d.setAttribute('rel', 'StyleSheet')
+
+        d.setAttribute('sensen-assets', '-css')
+
+        d.setAttribute('href', path)
+
+        document.head.appendChild(d)
+        
+        return d;
+        
+    }
+    
+    
+
+
+    LoadJS(path: string){
+
+        const d = document.createElement('script')
+        
+        d.addEventListener('load', ()=>{
+            console.log('Asset :', path, 'loaded')
+        })
+        
+        d.addEventListener('error', ()=>{
+            console.log('Asset :', path, 'failed')
+        })
+
+        d.setAttribute('type', 'text/javascript')
+
+        d.setAttribute('sensen-assets', '-js')
+
+        d.setAttribute('src', path)
+        
+        document.head.appendChild(d)
+        
+        return d;
+        
+    }
     
     
 
@@ -137,7 +218,28 @@ export default class SensenTheme{
 
                 try{
                     
+
+
+                    /**
+                     * Insertions des Assets
+                     */
+                    if(this.Assets.CSS.length){
+
+                        this.Assets.CSS.map(path=>this.LoadCSS(path))
+
+                    }
+
+                    if(this.Assets.JS.length){
+
+                        this.Assets.JS.map(path=>this.LoadJS(path))
+
+                    }
+
+
                     
+                    /**
+                     * Traitement des fragments
+                     */
                     const fragmentsArray = Object.entries( this.Fragments );
 
 
@@ -146,7 +248,7 @@ export default class SensenTheme{
 
                         fragmentsArray.map(e=>{
                             
-                            window.$SensenRLP.push(`@Theme.${ e[0] }`, e[1])
+                            window.$SensenRLP.push(`@Theme(${this.Theme}).${ e[0] }`, e[1])
                             
                         });
 
@@ -195,6 +297,11 @@ export default class SensenTheme{
         );
         
     }
+
+
+
+
+    
     
     
     

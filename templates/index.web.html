@@ -19,26 +19,26 @@
 
         <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
 
-        <title>Sensen Shadow App</title>
+        <title><%= htmlWebpackPlugin.options.title %></title>
 
         <meta name="format-detection" content="telephone=no">
     
         <meta name="msapplication-tap-highlight" content="no">
         
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi, viewport-fit=cover" />
+        <meta name="viewport" content="<%= htmlWebpackPlugin.options.viewport %>" />
         
         <meta name="color-scheme" content="light dark" />
 
-        <meta name="theme-color" value="#4285f4" />
+        <meta name="theme-color" value="<%= htmlWebpackPlugin.options.themeColor %>" />
 
 
         <link rel="stylesheet" href="./assets/css/index.css">
 
-        <base href="http://localhost:19450" />
+        <base href="http://localhost:<%= htmlWebpackPlugin.options.port %>" />
 
-        
+        <% htmlWebpackPlugin.tags.headTags %>
 
-    <link rel="icon" href="assets/favicon.png"></head>
+    </head>
 
     <body>
 
@@ -46,12 +46,12 @@
 
         <!-- Bundle - Debut -->
         
-        
+        <% htmlWebpackPlugin.tags.bodyTags %>
 
         <script> window.addEventListener('load', function(){ let t = setTimeout(()=>{ clearTimeout(t); (document.documentElement || document.body).scrollTop = 1; },60) }) </script>
         
         <!-- Bundle - Fin -->
 
 
-    <script defer src="sensen.runtime~shadow.js"></script><script defer src="sensen.shadow.js"></script><script defer src="sensen.runtime~theme.js"></script><script defer src="sensen.theme.js"></script></body>
+    </body>
 </html>

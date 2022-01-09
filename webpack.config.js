@@ -10,10 +10,9 @@ const path = require('path');
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-const nodeExternals = require('webpack-node-externals');
+
 
 /** * Sensen Shadow Config */
-
 const SensenConfig = require('./sensen.config');
 
 
@@ -33,6 +32,8 @@ module.exports = {
 	entry: {
 		
 		shadow: './jsbundle/index.js',
+
+		theme: './jsbundle/sensen.theme.bundle.js'
 	
 	},
 	
@@ -42,10 +43,12 @@ module.exports = {
 	devtool: 'inline-source-map',
 
 
+
+
 	
 	devServer: {
-	
-		// contentBase: './public',
+
+        open: true,
 	
 		hot: true,
 	
@@ -66,9 +69,9 @@ module.exports = {
         
 			patterns:[
         
-				{ from: 'app/templates/assets', to: path.resolve(__dirname, 'public/assets'), },
+				{ from: './assets', to: path.resolve(__dirname, 'public/assets'), },
         
-				{ from: 'app/templates/views', to: path.resolve(__dirname, 'public/views'), },
+				{ from: './views', to: path.resolve(__dirname, 'public/sensen/views'), },
         
 			]
         
@@ -77,7 +80,7 @@ module.exports = {
 
         new FaviconsWebpackPlugin({
 		
-			logo: './app/templates/assets/images/ggn.senju.png',
+			logo: './assets/images/ggn.senju.png',
 		
 			cache: true,
 		
@@ -108,7 +111,7 @@ module.exports = {
 		
 			filename: 'index.html',
 		
-			template: './app/templates/index.web.html',
+			template: './templates/index.web.html',
 		
 			title: SensenConfig.Title || 'Sensen Shadow',
 		
@@ -118,7 +121,7 @@ module.exports = {
 
 			port: SensenConfig.Port || '19620',
 		
-			inject: true
+			inject: 'body',
 		
 		}),
 
@@ -142,10 +145,16 @@ module.exports = {
 
     optimization: {
 		
-        runtimeChunk: 'single',
+        runtimeChunk: 'multiple',
 		
     },
 
+
+    performance: {
+        hints: false,
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000
+    }
 
 
 };

@@ -1,11 +1,7 @@
 import SensenTheme from "./sensen-hinata/Theme";
 
 
-
-
-
 const AppTheme = new SensenTheme('sensen-kit')
-
 
 AppTheme.Define( 'Header', AppTheme.Async('header') )
 

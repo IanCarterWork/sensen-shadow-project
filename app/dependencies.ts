@@ -1,10 +1,10 @@
-import LocationGetMethods from "./sensen-hinata/LocationMethods";
+import SensenHinata from "sensen-hinata";
 
 
 
 const AppViewControllersDependencies = {
 
-    'GET' : LocationGetMethods,
+    'GET' : SensenHinata.Dependencies.LocationGetMethods,
     
 }
 

@@ -1,24 +1,20 @@
-import { SensenRouter } from "./sensen-hinata/Router"
+/**
+* A Sensen Router
+* @package sensen.app.router
+* @license MIT
+* @sensen undefined : undefined (undefined)
+*/
+
+import SensenHinata from "sensen-hinata";
 import AppViewControllersDependencies from "./dependencies";
-import AboutView from "./view/about";
-import HomeView from "./view/home";
 
-
-const AppRouter = new SensenRouter({
-    
-    default: 'home?param=value',
-
+import HomeView from "./views/home";
+import AboutView from "./views/about";
+const UsingRouter = new SensenHinata.Router({
+    default: 'home',
     viewControllersDependencies: AppViewControllersDependencies
-
 });
-
-
-AppRouter
-
-    .add( HomeView )
-
-    .add( AboutView )
-
-
-
-export default AppRouter
+UsingRouter
+.add(HomeView)
+.add(AboutView)
+;export default UsingRouter;

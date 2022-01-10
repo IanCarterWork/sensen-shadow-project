@@ -1,16 +1,17 @@
-import Sensen from "./sensen-hinata/Framework";
-import AppRouter from "./router";
+import SensenHinata from "sensen-hinata";
+import UsingRouter from "./router";
 
 
 
 
 const SensenJSApp = ()=>{
     
-    AppRouter.root = document.querySelector('#root') as HTMLElement;
+    UsingRouter.root = document.querySelector('#root') as HTMLElement;
 
-    AppRouter.render()
+    UsingRouter.render()
     
 }
 
-Sensen.JS(SensenJSApp);
+SensenHinata.Framework.JS(SensenJSApp);
+
 

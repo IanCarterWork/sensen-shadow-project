@@ -1,6 +1,6 @@
-import SensenTheme from "./sensen-hinata/Theme";
+import SensenHinata from "sensen-hinata";
 const themeBundle = {}
-;themeBundle['sensen-kit'] = (new SensenTheme('sensen-kit'))
+;themeBundle['sensen-kit'] = (new SensenHinata.Theme('sensen-kit'))
 ;themeBundle['sensen-kit'].Asset('-css','assets/css/sensen-kit/index.css')
 ;themeBundle['sensen-kit'].Asset('-js','assets/js/sensen-kit/index.js')
 ;themeBundle['sensen-kit']
